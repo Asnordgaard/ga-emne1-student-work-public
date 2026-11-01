@@ -12,14 +12,14 @@ print(data_directory.exists())
 print(prices_path)
 print(prices_path.exists())
 
-print("\n---\n")
+print("\n-1-\n")
 
 with open(prices_path, "r", encoding="utf-8") as file:
     content = file.read()
 
 print(content)
 
-print("\n---\n")
+print("\n-2-\n")
 
 prices = []
 with open(prices_path, "r", encoding="utf-8") as file:
