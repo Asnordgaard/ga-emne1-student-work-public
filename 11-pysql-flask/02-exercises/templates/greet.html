@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greet</title>
+</head>
+<body>
+    <form action="/greet" method="get">
+        <label for = "name">
+            What's your name?
+        </label>
+        <input id = "name"
+               name = "name"
+               value = ""
+               maxlength="30">
+        <button type="submit">Send</button>
+    </form>
+    <p>Hello {{ name }}</p>
+    <a href="/">Home</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+body {
+    font-family: inter, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 40px;
+}
+
+h1 {
+    color: #234e70;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+select {
+    padding: 10px 20px 10px 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #234e70;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #16354d;
+}
