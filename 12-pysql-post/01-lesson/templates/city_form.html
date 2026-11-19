@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    >
 </head>
 <body>
-
+    <div class="container w-75 mt-4">
+        <form method="post" action="{{ '/edit/' ~ city_id if city_id else '/add' }}" class="row g-3">
+            <label class="form-label" for="name">City name:</label>
+            <input class="form-control" id="name" name="name" value="{{ name }}" maxlength="35" required placeholder="Name">
+            <input class="form-control" id="countrycode" name="countrycode" value="NOR" maxlength="3" disabled>
+            <input class="form-control" id="district" name="district" value="{{ district }}" maxlength="35" required placeholder="District">
+            <input class="form-control" id="population" name="population" value="{{ population }}" required placeholder="Population">
+            <button type="submit" class="btn btn-primary mt-3 mb-4">Save city</button>
+        </form>
+        <a href="/">Home</a>
+    </div>
 </body>
 </html>

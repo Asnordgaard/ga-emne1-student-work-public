@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Cities</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    >
 </head>
 <body>
-    <form action="/cities" method="get">
-        <label for = "country">
-            Country code
-        </label>
-        <input id = "country"
-               name = "country"
-               value = "{{ code }}"
-               maxlength="3" required>
-        <button type="submit">Search</button>
-    </form>
-    <h1> Cities in {{ code }}</h1>
-    <ul> {% for name, population in rows %}
-        <li>
-            {{ name }}: {{ population }}
-        </li>
-    {% else %}
-        <li>No cities found.</li>
-    {% endfor %}
-    </ul>
-    <a href="/">Home</a>
+    <div class="container w-75 mt-3">
+        <form action="/cities" method="get">
+            <label for = "country"  class="form-label">
+                Country code:
+            </label>
+            <input id = "country"
+                   name = "country"
+                   value = "{{ code }}"
+                   maxlength="3" required
+                   class="form-control"
+                   placeholder="write a three letter country code. EG. NOR">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
+        </form>
+        <div class="mt-4">
+            <h1> Cities in {{ code }}</h1>
+            <ul> {% for name, population in rows %}
+                <li>
+                    {{ name }}: {{ population }}
+                </li>
+            {% else %}
+                <li>No cities found.</li>
+            {% endfor %}
+            </ul>
+            <a href="/">Home</a> | <a href="/add">Add a new city</a>
+        </div>
+    </div>
 </body>
 </html>

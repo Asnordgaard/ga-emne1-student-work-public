@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container w-75 mt-4">
+    <h1>
+    {{ heading }}
+    </h1>
+    <hr><br>
+
+    <!-- This is where the backend relevant code starts -->
+    <!-- If existing city, add delete button -->
+    <div class="row">
+        {% if city_id %}
+        <form method="post" action="/delete/{{ city_id }}">
+          <button type="submit" class="btn btn-danger float-end" onclick="return window.confirm('Delete this city')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+              </svg> Delete city
+          </button>
+        </form>
+        {% endif %}
+    </div>
+
+    <form method="post" action="{{ '/edit/' ~ city_id if city_id else '/add' }}" class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label" for="name">City name:</label>
+            <input class="form-control" id="name" name="name" value="{{ name }}" maxlength="35" required placeholder="Name">
+        </div>
+        <div class="col-md-6">
+            <label for="countrycode" class="form-label">Country:</label>
+            <!-- Gets country codes and shows the country name to the user -->
+            <select name="countrycode" id="countrycode" class="form-select" style="width: 260px;">
+                <option value="">-- Choose a country --</option>
+                {% for country_code, country_name in code_rows %}
+                    <option value="{{ country_code }}" {% if country_code == countrycode %}selected{% endif %}>
+                        {{ country_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="district" class="form-label">District:</label>
+            <input class="form-control" id="district" name="district" value="{{ district }}" maxlength="35" required placeholder="District">
+        </div>
+        <div class="col-md-6">
+            <label for="population" class="form-label">Population:</label>
+            <input type="number" class="form-control" id="population" name="population" value="{{ population }}" required placeholder="Population">
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary mt-3 mb-4">Save city</button>
+        </div>
+    </form>
+    <a href="/">Home</a>
+</div>
+{% endblock %}
